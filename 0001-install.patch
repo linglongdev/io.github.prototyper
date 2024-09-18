@@ -1,0 +1,72 @@
+From 97a9ecb95c8839c383bb6d9e9da6e6adc6064a7d Mon Sep 17 00:00:00 2001
+From: wjyrich <1071633242@qq.com>
+Date: Sat, 14 Sep 2024 16:17:17 +0800
+Subject: [PATCH] install
+
+---
+ Prototyper.desktop            | 11 +++++++++++
+ Prototyper.pro                |  6 ++++++
+ src/Core/Core.pro             |  3 +++
+ src/Prototyper/Prototyper.pro |  2 ++
+ 4 files changed, 22 insertions(+)
+ create mode 100644 Prototyper.desktop
+
+diff --git a/Prototyper.desktop b/Prototyper.desktop
+new file mode 100644
+index 0000000..ee55292
+--- /dev/null
++++ b/Prototyper.desktop
+@@ -0,0 +1,11 @@
++[Desktop Entry]
++Categories=Accessibility;Qt;Utility;
++Exec=Prototyper
++Name=Prototyper
++Name[zh_CN]=Prototyper
++Icon=bitcoin-btc-logo-full
++StartupNotify=false
++Terminal=false
++Type=Application
++GenericName=Prototyper
++Version=2.0.3
+\ No newline at end of file
+diff --git a/Prototyper.pro b/Prototyper.pro
+index e6d3317..bcc9cf4 100644
+--- a/Prototyper.pro
++++ b/Prototyper.pro
+@@ -35,3 +35,9 @@ SUBDIRS = src \
+ src.depends = 3rdparty
+ 
+ OTHER_FILES = LICENSE README.md
++desktop.files = Prototyper.desktop
++desktop.path = $$PREFIX/share/applications/
++icons.path = $$PREFIX/share/icons/hicolor/apps/
++icons.files = bitcoin-btc-logo-full.png
++
++INSTALLS += desktop icons
+\ No newline at end of file
+diff --git a/src/Core/Core.pro b/src/Core/Core.pro
+index 603e10b..4f0aacb 100644
+--- a/src/Core/Core.pro
++++ b/src/Core/Core.pro
+@@ -166,3 +166,6 @@ INCLUDEPATH += $$PWD/../../3rdparty/cfgfile
+ DEPENDPATH += $$PWD/../../3rdparty/cfgfile
+ 
+ OTHER_FILES += version.hpp.in
++
++target.path = $$PREFIX/bin
++INSTALLS += target
+\ No newline at end of file
+diff --git a/src/Prototyper/Prototyper.pro b/src/Prototyper/Prototyper.pro
+index eed0242..3c37c30 100644
+--- a/src/Prototyper/Prototyper.pro
++++ b/src/Prototyper/Prototyper.pro
+@@ -29,3 +29,5 @@ unix|win32: LIBS += -L$$OUT_PWD/../../ -lPrototyper.Core
+ 
+ INCLUDEPATH += $$PWD/..
+ DEPENDPATH += $$PWD/..
++target.path = $$PREFIX/bin
++INSTALLS += target
+\ No newline at end of file
+-- 
+2.43.4
+
